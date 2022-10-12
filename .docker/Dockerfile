@@ -22,7 +22,6 @@ RUN apt update && apt install -y \
     wget \
     zsh 
 
-
 # ROS
 RUN apt update && apt install -y \
     pkg-config \
@@ -44,18 +43,16 @@ RUN apt update && apt install -y \
     ros-$ROS_DISTRO-ddynamic-reconfigure \
     ros-$ROS_DISTRO-rgbd-launch 
 
-
-
 RUN apt-key adv \
-        --keyserver keyserver.ubuntu.com \
-        --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || \
-        apt-key adv \
-        --keyserver hkp://keyserver.ubuntu.com:80 \
-        --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE \
+    --keyserver keyserver.ubuntu.com \
+    --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || \
+    apt-key adv \
+    --keyserver hkp://keyserver.ubuntu.com:80 \
+    --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE \
     && add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u \
     && apt-get install -y --install-recommends \
-        librealsense2-dkms librealsense2-utils \
-        librealsense2-dev librealsense2-dbg
+    librealsense2-dkms librealsense2-utils \
+    librealsense2-dev librealsense2-dbg
 
 # Reduce size by removing apt cache
 RUN ["/bin/bash", "-c", "rm -rf /var/lib/apt/lists/*"]
@@ -67,7 +64,7 @@ RUN echo "* - nice -15" >> /etc/security/limits.conf
 RUN mkdir -p dev_ws/src
 WORKDIR /dev_ws/src
 
-# Clone STOMP and rqt_joint_trajectory pkgs
+
 RUN ["/bin/bash", "-c", "git clone https://github.com/rjwb1/realsense-ros.git"]
 
 # Build workspace
