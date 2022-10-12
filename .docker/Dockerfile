@@ -37,7 +37,9 @@ RUN apt update && apt install -y \
     ros-$ROSDISTRO-rqt-graph \
     ros-$ROSDISTRO-rqt-topic \
     ros-$ROSDISTRO-rqt-top \
+    ros-$ROSDISTRO-rviz \
     # Realsense
+    ros-$ROS_DISTRO-rqt-image-view \
     software-properties-common \
     ros-$ROS_DISTRO-ddynamic-reconfigure \
     ros-$ROS_DISTRO-rgbd-launch 
